@@ -1,0 +1,19 @@
+h1 {
+    text-align: center;
+}
+
+.container {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(10, 0fr);  
+}
+
+.square {
+    height: 20px;
+    width: 20px;    
+    border: 2px solid black;
+}
+
+.color {
+    
+}
