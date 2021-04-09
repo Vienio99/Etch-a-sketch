@@ -1,20 +1,30 @@
-const container = document.querySelector('.container')
-let square;
-
 function findSquare(number) {
     return Math.sqrt(number).toFixed()
 }
 
+const setBg = () => {
+    const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+    return randomColor;
+}
+
 function createGrid(size) {
-    size = findSquare(size) * findSquare(size);
+    let squaredSize = findSquare(size)
+    size = squaredSize * squaredSize;
     for (let i = 0; i < size; i++) {
         square = document.createElement('div');
-        square.classList.add('square')
-        container.appendChild(square)
+        square.classList.add('square');
+        container.appendChild(square);
         container.style.gridTemplateColumns = "repeat(" + Math.sqrt(size) + ", 0fr)";
     } 
 }
 
+const container = document.querySelector('.container')
+let square;
+
+let size = 10;
+createGrid(size);
+
+// Button to change size of the grid
 const changeSize = document.querySelector('.main-buttons #size')
 
 changeSize.addEventListener('click', () => {
@@ -24,21 +34,15 @@ changeSize.addEventListener('click', () => {
     }
     createGrid(size);
 })
-let size = 10;
 
-createGrid(size);
 
 const squares = document.querySelectorAll('.square')
 
-squares.forEach((square) => {
-    square.addEventListener('mouseover', () => {
-        square.style.backgroundColor = setBg();
-    })
-})
 
-const setBg = () => {
-    const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
-    return randomColor;
+container.onmouseover = function(event) {
+    if (event.target.className === 'square') {
+        event.target.style.backgroundColor = setBg();
+    }
 }
 
 const restart = document.querySelector('.main-buttons #restart')
