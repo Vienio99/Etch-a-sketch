@@ -1,28 +1,23 @@
-function findSquare(number) {
-    return Math.sqrt(number).toFixed()
-}
-
 const setBg = () => {
     const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
     return randomColor;
 }
 
 function createGrid(size) {
-    let squaredSize = findSquare(size)
-    size = squaredSize * squaredSize;
-    for (let i = 0; i < size; i++) {
+    container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    for (let i = 0; i < size ** 2; i++) {
         square = document.createElement('div');
         square.classList.add('square');
         square.style.backgroundColor = 'white';
         container.appendChild(square);
-        container.style.gridTemplateColumns = "repeat(" + Math.sqrt(size) + ", 0fr)";
+        square.style.height = square.style.width;
     } 
 }
 
 const container = document.querySelector('.container')
 let square;
 
-let size = 100;
+let size = 10;
 createGrid(size);
 
 // Button to change size of the grid
@@ -67,8 +62,4 @@ restart.onclick = function(event) {
         square.style.backgroundColor = 'white';
     })
     
-}
-
-module.exports = {
-    findSquare: findSquare,
 }

@@ -31,13 +31,17 @@ h1:hover {
 
 .container {
     display: grid;
-    justify-content: center;
+    border: 1px solid black;
+    width: 400px;
+    height: 400px;
+    max-width: 400px;
+    max-height: 400px;
+    box-sizing: border-box;
+    margin: 2rem auto;
 }
 
 .square {
-    height: 20px;
-    width: 20px;    
-    border: 2px solid black;
+    border: 1px solid black;
 }
 
 .main-buttons {
