@@ -19,7 +19,7 @@
   <ul>
     <li><a href="https://fonts.google.com/">Google Fonts</a></li>
   </ul> 
-<h2>Home page image</h2>
+<h2>Home page</h2>
 <img src="img/Project.png"></img>
 <h2>Author</h2>
 <p><a href="https://github.com/Vienio99">Vienio99</a></p>
