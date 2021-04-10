@@ -21,14 +21,25 @@ function createGrid(size) {
 const container = document.querySelector('.container')
 let square;
 
-let size = 10;
+let size = 100;
 createGrid(size);
 
 // Button to change size of the grid
 const changeSize = document.querySelector('.main-buttons #size')
 
 changeSize.addEventListener('click', () => {
-    size = prompt('Choose size from 1 to 100');
+    let ask = true;
+    while (ask) {
+        let userValue = prompt('Enter a number between 1 to 100');
+        if (userValue === null) {
+            ask = false;
+            break;
+        } else if (userValue > 1 && userValue < 100) {
+            ask = false;
+            size = userValue;
+            break;
+        } 
+    }
     while (container.firstChild) {
         container.removeChild(container.firstChild);
     }
@@ -36,7 +47,7 @@ changeSize.addEventListener('click', () => {
 })
 
 
-const squares = document.querySelectorAll('.square')
+let squares = document.querySelectorAll('.square')
 
 
 container.onmouseover = function(event) {
@@ -46,9 +57,13 @@ container.onmouseover = function(event) {
 }
 
 const restart = document.querySelector('.main-buttons #restart')
-restart.addEventListener('click', () => {
+
+restart.onclick = function(event) {
+    // To select newly created squares
+    squares = document.querySelectorAll('.square')
     squares.forEach((square) => {
         square.style.backgroundColor = 'white';
     })
-})
+    
+}
 
