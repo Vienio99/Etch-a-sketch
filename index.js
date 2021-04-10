@@ -13,6 +13,7 @@ function createGrid(size) {
     for (let i = 0; i < size; i++) {
         square = document.createElement('div');
         square.classList.add('square');
+        square.style.backgroundColor = 'white';
         container.appendChild(square);
         container.style.gridTemplateColumns = "repeat(" + Math.sqrt(size) + ", 0fr)";
     } 
@@ -37,13 +38,14 @@ changeSize.addEventListener('click', () => {
         } else if (userValue > 1 && userValue < 100) {
             ask = false;
             size = userValue;
+            while (container.firstChild) {
+                container.removeChild(container.firstChild);
+            }
+            createGrid(size);
             break;
         } 
     }
-    while (container.firstChild) {
-        container.removeChild(container.firstChild);
-    }
-    createGrid(size);
+
 })
 
 
@@ -67,3 +69,6 @@ restart.onclick = function(event) {
     
 }
 
+module.exports = {
+    findSquare: findSquare,
+}
